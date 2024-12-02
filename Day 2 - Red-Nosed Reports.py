@@ -85,7 +85,7 @@ def checkIfSafe(levels, comparator):
         return False
 
 
-with open('data/day2.txt') as file:
+with open('data/tester.txt') as file:
     for report in file:
         levels = report.split()
         levelsTuple = tuple(levels)
@@ -100,11 +100,12 @@ with open('data/day2.txt') as file:
             for i in range(len(levels)):
                 tester = list(levelsTuple)
                 del tester[i]
-            if int(tester[0]) > int(tester[1]):
-                test = checkIfSafe(tester, increasing_comparator)
-            elif int(tester[0]) < int(tester[1]):
-                test = checkIfSafe(tester, decreasing_comparator)
-            if test:
-                safe += 1
+                if int(tester[0]) > int(tester[1]):
+                    test = checkIfSafe(tester, increasing_comparator)
+                elif int(tester[0]) < int(tester[1]):
+                    test = checkIfSafe(tester, decreasing_comparator)
+                if test:
+                    safe += 1
+                    break
 
 print(safe)
